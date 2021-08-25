@@ -15,12 +15,12 @@ class CreateDirectorioServiciosTable extends Migration
     {
         Schema::create('directorio_servicios', function (Blueprint $table) {
             $table->id();
-            $table->string('nombreservicio');
-            $table->string('Tiposervicio');
+            $table->string('NombreServicio')->unique();
+            $table->string('TipoServicio');
             $table->boolean('ServicioDomicilio');
-            $table->mediumText('Horarioatencion');
+            $table->mediumText('HorarioAtencion');
             $table->mediumText('PaginaWeb');
-            $table->mediumText('Correoelectronico');
+            $table->mediumText('CorreoElectronico');
             $table->timestamps();
         });
     }
