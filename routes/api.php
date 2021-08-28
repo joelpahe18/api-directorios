@@ -13,6 +13,7 @@ Route::group([
     Route::post('me', [\App\Http\Controllers\Api\V1\AuthController::class, 'me']);
 });
 
+// Index, Store(Created), Update, Show y Destroy
 Route::apiResource('v1/directorioServicio', App\Http\Controllers\Api\V1\DirectorioServicioController::class);
 Route::apiResource('v1/ubicacionServicio', App\Http\Controllers\Api\V1\UbicacionServicioController::class);
 Route::apiResource('v1/maestroMunicipio', App\Http\Controllers\Api\V1\MaestroMunicipioController::class);
