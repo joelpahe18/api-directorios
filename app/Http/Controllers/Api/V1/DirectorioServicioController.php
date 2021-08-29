@@ -33,26 +33,6 @@ class DirectorioServicioController extends Controller
             ], 200);
     }
 
-    function maximo_elemento( $numeros )
-    {
-        $respuesta = array();
-
-        for( $i = 0; $i < count( $numeros ); $i ++ )
-        {
-            $suma = 0;
-            $respuesta[ $numeros[$i] ] = 0;
-
-            for( $j = ($i + 1); $j < count( $numeros ); $j ++)
-            {
-                $suma += $numeros[ $j ];
-            }
-            
-            $respuesta[ $i ] = $suma;
-            print_r( $respuesta );die();
-            unset( $respuesta );
-        }
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -61,8 +41,6 @@ class DirectorioServicioController extends Controller
      */
     public function store(DirectorioRequest $request)
     {
-        // $request->validated();
-
         $data = $request->all();
         
         $respuesta = DirectorioServicios::create($data);
@@ -72,12 +50,16 @@ class DirectorioServicioController extends Controller
             return response()->json([
                 'success'   =>  true,
                 'message'   =>  'Consulta exitosa.',
-                'data'      =>  $directorios,
-                'codigo'    =>  200
-            ], 200);
+                // 'data'      =>  $directorios,
+                'codigo'    =>  201
+            ], 201);
         }
 
-        return response()->json(['message' => 'Error to create post'], 500);
+        return response()->json([
+                'success'   =>  true,
+                'message' => 'Error al crear el directorio',
+                'codigo'    =>  200
+                ], 500);
     }
 
     /**
